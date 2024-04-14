@@ -53,7 +53,7 @@ static double argInit_real_T()
 //                char **argv
 // Return Type  : int
 //
-int main(int, char **)
+int main(int argc, char * argv[])
 {
   // The initialize function is being called automatically from your entry-point
   // function. So, a call to initialize is not included here. Invoke the
@@ -63,11 +63,20 @@ int main(int, char **)
   // Initialize function 'FuzzyPrice' input arguments.
   
   // Call the entry-point 'FuzzyPrice'.
-  priceRate_tmp =FuzzyPrice(120,12300,10990,0.6,8,10,0,150);
+
+  if (argc != 9) {
+	  std::cout << "please input right number of args.\n";
+	  return 1;
+  }
+  double parameter[8] = { 0.0 };
+  for (int i = 0; i < 8; i++) {
+	  parameter[i] = std::strtod(argv[i + 1], nullptr);
+  }
+  priceRate_tmp = FuzzyPrice(parameter[0], parameter[1], parameter[2], parameter[3], parameter[4], parameter[5], parameter[6], parameter[7]);
+
   // Terminate the application.
   // You do not need to do this more than one time.
   std::cout<<priceRate_tmp<< std::endl;
-  getchar();
 
   return 0;
 }
