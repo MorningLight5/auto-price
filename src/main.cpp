@@ -33,7 +33,6 @@
 // Include Files
 #include "main.h"
 #include "FuzzyPrice.h"
-#include "FuzzyPrice_terminate.h"
 #include <iostream>
 
 // Function Declarations
